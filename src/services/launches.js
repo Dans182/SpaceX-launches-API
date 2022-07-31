@@ -24,6 +24,7 @@ export const getLaunchByFlightNumber = async (flightNumber) => {
 -Axios
 -Fetching es la librería nativa */
 
+/* Formas de declarar un componente: Método función o método función flecha*/
 // export async function getAllLaunches() {
 //   const response = await fetch(API_URL + "/launches");
 //   const data = await response.json();

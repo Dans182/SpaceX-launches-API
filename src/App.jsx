@@ -1,6 +1,20 @@
+import { useState, useEffect } from "react";
+import * as API from "./services/launches"
+
 export function App() {
+
+
   return <div>Hola Mundo</div>;
 }
+
+/* 
+export function App() {
+  return <div>Hola Mundo</div>;
+} 
+
+const App = () => <div>Hola Mundo</div>;
+
+*/
 
 /*
 Sintaxis 1, para creación de componenetes en React: 
