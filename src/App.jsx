@@ -1,32 +1,51 @@
 import { useState, useEffect, Fragment } from "react";
-import * as API from "./services/launches" //importo todos las rutas de API, como "API"
-import logo from "./assets/logo-spacex.png"
-
+import { Heading, Box, Image, Flex, Text, Spacer, Tag } from "@chakra-ui/react";
+import * as API from "./services/launches"; //importo todos las rutas de API, como "API"
+import logo from "./assets/logo-spacex.png";
 
 export function App() {
-const [lauches, setLaunches] = useState([])
+  const [lauches, setLaunches] = useState([]);
 
-useEffect(() => {
-  API.getAllLaunches().then(setLaunches); 
-},[])
+  useEffect(() => {
+    API.getAllLaunches().then(setLaunches);
+  }, []);
 
-//Lo mismo, escrito de otra manera
-// useEffect(() => {
-//   API.getAllLaunches().then(data => setLaunches(data)); 
-// },[])
+  //Lo mismo, escrito de otra manera
+  // useEffect(() => {
+  //   API.getAllLaunches().then(data => setLaunches(data));
+  // },[])
 
-//Aca estamos usando un .then, como una manera de usar un async-await en el useEffect, asi esperar el resultado... Async Await no se podría usar en el useEffect
-//En resumen, se va a ejecutar la promesa, vamos a tener los datos y los pasamos al useState
-  return <Fragment>
-    <img src={logo} width={300}></img>
-    <h1>SpaceX Launches</h1>
-    
-    <ul>
-      {lauches.map(launch=>(
-      <li key={launch.flight_number}>{launch.name} {launch.date_local}</li>
-      ))}
-    </ul>
-    </Fragment>;
+  //Aca estamos usando un .then, como una manera de usar un async-await en el useEffect, asi esperar el resultado... Async Await no se podría usar en el useEffect
+  //En resumen, se va a ejecutar la promesa, vamos a tener los datos y los pasamos al useState
+  return (
+    <Fragment>
+      <Image src={logo} width={300} margin={4}></Image>
+      <Heading as="h1" size="lg" margin={4}>
+        SpaceX Launches
+      </Heading>
+      <section>
+        {lauches.map((launch) => (
+          <Box
+            key={launch.flight_number}
+            bg="gray.100"
+            padding={4}
+            margin={4}
+            borderRadius="lg"
+          >
+            <Flex display="flex">
+              <Text fontSize="2x1">
+                Mission: <strong>{launch.name}</strong> {launch.date_local}
+              </Text>
+              <Spacer />
+              <Tag padding={4} colorScheme={launch.success ? "green" : "red"}>
+                {launch.success ? "Success" : "Failure"}
+              </Tag>
+            </Flex>
+          </Box>
+        ))}
+      </section>
+    </Fragment>
+  );
 }
 
 /* 
