@@ -1,14 +1,32 @@
 import { useState, useEffect, Fragment } from "react";
 import * as API from "./services/launches" //importo todos las rutas de API, como "API"
+import logo from "./assets/logo-spacex.png"
+
 
 export function App() {
 const [lauches, setLaunches] = useState([])
 
 useEffect(() => {
-  API.getAllLaunches().then(setLaunches); //Aca estamos usando un .then, como una manera de usar un async-await en el useEffect, asi esperar el resultado... Async Await no se podría usar en el useEffect
+  API.getAllLaunches().then(setLaunches); 
 },[])
 
-  return <Fragment>Hola Mundo</Fragment>;
+//Lo mismo, escrito de otra manera
+// useEffect(() => {
+//   API.getAllLaunches().then(data => setLaunches(data)); 
+// },[])
+
+//Aca estamos usando un .then, como una manera de usar un async-await en el useEffect, asi esperar el resultado... Async Await no se podría usar en el useEffect
+//En resumen, se va a ejecutar la promesa, vamos a tener los datos y los pasamos al useState
+  return <Fragment>
+    <img src={logo} width={300}></img>
+    <h1>SpaceX Launches</h1>
+    
+    <ul>
+      {lauches.map(launch=>(
+      <li key={launch.flight_number}>{launch.name} {launch.date_local}</li>
+      ))}
+    </ul>
+    </Fragment>;
 }
 
 /* 
