@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
-import * as API from "./services/launches"
+import { useState, useEffect, Fragment } from "react";
+import * as API from "./services/launches" //importo todos las rutas de API, como "API"
 
 export function App() {
+const [lauches, setLaunches] = useState([])
 
+useEffect(() => {
+  API.getAllLaunches().then(setLaunches); //Aca estamos usando un .then, como una manera de usar un async-await en el useEffect, asi esperar el resultado... Async Await no se podría usar en el useEffect
+},[])
 
-  return <div>Hola Mundo</div>;
+  return <Fragment>Hola Mundo</Fragment>;
 }
 
 /* 
