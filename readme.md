@@ -6,3 +6,6 @@ https://github.com/r-spacex
 Instalación de Chakra UI
 npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 https://chakra-ui.com/
+
+React Icons
+Tiene los iconos de FontAwesome y más.
