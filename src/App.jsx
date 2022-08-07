@@ -1,8 +1,8 @@
 import { useState, useEffect, Fragment } from "react";
-import { Heading, Box, Image, Flex, Text, Spacer, Tag } from "@chakra-ui/react";
-Fimport * as API from "./services/launches"; //importo todos las rutas de API, como "API"
-import logo from "./assets/logo-spacex.png";
+import { Heading, Image } from "@chakra-ui/react";
 import { Launchitem } from "./components/Launchitem";
+import * as API from "./services/launches"; //importo todos las rutas de API, como "API"
+import logo from "./assets/logo-spacex.png";
 
 export function App() {
   const [lauches, setLaunches] = useState([]);
@@ -26,7 +26,7 @@ export function App() {
       </Heading>
       <section>
         {lauches.map((launch) => (
-          <Launchitem key={launch.flight_number}{...launch} />
+          <Launchitem key={launch.flight_number} {...launch} />
         ))}
       </section>
     </Fragment>

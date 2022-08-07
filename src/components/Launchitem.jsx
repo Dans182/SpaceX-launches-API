@@ -6,7 +6,7 @@ import { parseISO } from "date-fns";
 export const Launchitem = (launch) => {
   return (
     <Box bg="gray.100" padding={4} margin={4} borderRadius="lg">
-      <Flex display="flex">
+      <Flex>
         <Text fontSize="2x1">
           Mission:{" "}
           <strong>
@@ -24,7 +24,7 @@ export const Launchitem = (launch) => {
           {format(parseISO(launch.date_local), "d MMMM, yyyy")}
         </Text>
       </Flex>
-      <Button colorScheme="purple">More details</Button>
+      <Button mt={2} colorScheme="purple">More details</Button>
     </Box>
   );
 };
