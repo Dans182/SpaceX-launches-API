@@ -1,10 +1,8 @@
 import { useState, useEffect, Fragment } from "react";
 import { Heading, Box, Image, Flex, Text, Spacer, Tag } from "@chakra-ui/react";
-import { HiCalendar } from "react-icons/hi";
-import format from "date-fns/format";
-import { parseISO } from "date-fns";
-import * as API from "./services/launches"; //importo todos las rutas de API, como "API"
+Fimport * as API from "./services/launches"; //importo todos las rutas de API, como "API"
 import logo from "./assets/logo-spacex.png";
+import { Launchitem } from "./components/Launchitem";
 
 export function App() {
   const [lauches, setLaunches] = useState([]);
@@ -28,29 +26,7 @@ export function App() {
       </Heading>
       <section>
         {lauches.map((launch) => (
-          <Box
-            key={launch.flight_number}
-            bg="gray.100"
-            padding={4}
-            margin={4}
-            borderRadius="lg"
-          >
-            <Flex display="flex">
-              <Text fontSize="2x1">
-                Mission: <strong>{launch.name} ({format(parseISO(launch.date_local), "yyyy")})</strong>
-              </Text>
-              <Spacer />
-              <Tag padding={4} colorScheme={launch.success ? "green" : "red"}>
-                {launch.success ? "Success" : "Failure"}
-              </Tag>
-            </Flex>
-            <Flex align="center">
-              <HiCalendar />
-              <Text fontSize="sm" ml={1}>
-                {format(parseISO(launch.date_local), "d MMMM, yyyy")}
-              </Text>
-            </Flex>
-          </Box>
+          <Launchitem key={launch.flight_number}{...launch} />
         ))}
       </section>
     </Fragment>
@@ -62,7 +38,7 @@ export function App() {
   return <div>Hola Mundo</div>;
 } 
 
-const App = () => <div>Hola Mundo</div>;
+export const App = () => <div>Hola Mundo</div>;
 
 */
 
