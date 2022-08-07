@@ -9,3 +9,9 @@ https://chakra-ui.com/
 
 React Icons
 Tiene los iconos de FontAwesome y más.
+npm install react-icons --save
+https://react-icons.github.io/react-icons/
+
+Date-fns
+npm install date-fns --save
+https://date-fns.org/
