@@ -1,34 +1,18 @@
-import { useState, useEffect, Fragment } from "react";
-import { Heading, Image } from "@chakra-ui/react";
+import { Fragment } from "react";
+import { Routes, Route } from "react-router-dom";
+import { Image } from "@chakra-ui/react";
 import { Launchitem } from "./components/Launchitem";
-import * as API from "./services/launches"; //importo todos las rutas de API, como "API"
+
 import logo from "./assets/logo-spacex.png";
 
 export function App() {
-  const [lauches, setLaunches] = useState([]);
-
-  useEffect(() => {
-    API.getAllLaunches().then(setLaunches);
-  }, []);
-
-  //Lo mismo, escrito de otra manera
-  // useEffect(() => {
-  //   API.getAllLaunches().then(data => setLaunches(data));
-  // },[])
-
-  //Aca estamos usando un .then, como una manera de usar un async-await en el useEffect, asi esperar el resultado... Async Await no se podría usar en el useEffect
-  //En resumen, se va a ejecutar la promesa, vamos a tener los datos y los pasamos al useState
   return (
     <Fragment>
       <Image src={logo} width={300} margin={4}></Image>
-      <Heading as="h1" size="lg" margin={4}>
-        SpaceX Launches
-      </Heading>
-      <section>
-        {lauches.map((launch) => (
-          <Launchitem key={launch.flight_number} {...launch} />
-        ))}
-      </section>
+      <Routes>
+        <Route path="/" element={<LaunchesList />} />
+        <Route path="launch/:id" element={<LaunchItem />} />
+      </Routes>
     </Fragment>
   );
 }

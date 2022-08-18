@@ -29,6 +29,13 @@ https://react-icons.github.io/react-icons/
 https://date-fns.org/
 
 
+### React Router
+
+`npm install react-router-dom@6`
+
+https://reactrouter.com
+
+
 Ejecutar servidor de desarrollo.
 
 `npm run dev`
