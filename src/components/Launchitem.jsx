@@ -1,5 +1,6 @@
 import { Box, Flex, Text, Spacer, Tag, Button, Icon } from "@chakra-ui/react";
 import { HiCalendar } from "react-icons/hi";
+import { Link } from "react-router-dom";
 import format from "date-fns/format";
 import { parseISO } from "date-fns";
 
@@ -24,7 +25,12 @@ export const Launchitem = (launch) => {
           {format(parseISO(launch.date_local), "d MMMM, yyyy")}
         </Text>
       </Flex>
-      <Button mt={2} colorScheme="purple">More details</Button>
+      {/* <Link to={"/launch/" + launch.flight_number}> */}
+      <Link to={`/launch/${launch.flight_number}`}>
+        <Button mt={2} colorScheme="purple">
+          More details
+        </Button>
+      </Link>
     </Box>
   );
 };
