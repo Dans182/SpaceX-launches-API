@@ -27,3 +27,8 @@ https://react-icons.github.io/react-icons/
 `npm install date-fns --save`
 
 https://date-fns.org/
+
+
+Ejecutar servidor de desarrollo.
+
+`npm run dev`
