@@ -6,7 +6,8 @@ export const LaunchDetails = () => {
   const [launch, setLaunch] = useState({});
   const { launchId } = useParams();
   //   const params = useParams();
-  //   Si no uso el useParams, no me funcionan los props. Es necesario el uso de este hook
+  //   Si no uso el useParams, no me funcionan los props. Es necesario el uso de este hook. Es en resumen, un hook para
+  //   pasar props, que se hace necesario cuando empiezas a usar React Router, ya que con esta librería no funcionan los props.
 
   useEffect(() => {
     API.getLaunchById(launchId).then(setLaunch).catch(console.log);
