@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from "react";
 import { Heading } from "@chakra-ui/react";
-import * as API from "./services/launches"; //importo todos las rutas de API, como "API"
+import { Launchitem } from "./Launchitem";
+import * as API from "../services/launches"; //importo todos las rutas de API, como "API"
 
 export function LaunchesList() {
   const [lauches, setLaunches] = useState([]);

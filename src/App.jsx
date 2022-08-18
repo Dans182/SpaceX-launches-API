@@ -1,9 +1,9 @@
 import { Fragment } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Image } from "@chakra-ui/react";
-import { Launchitem } from "./components/Launchitem";
-
 import logo from "./assets/logo-spacex.png";
+import { LaunchesList } from "./components/LaunchesList";
+import { LaunchDetails } from "./components/LaunchDetails";
 
 export function App() {
   return (
@@ -11,7 +11,7 @@ export function App() {
       <Image src={logo} width={300} margin={4}></Image>
       <Routes>
         <Route path="/" element={<LaunchesList />} />
-        <Route path="launch/:id" element={<LaunchItem />} />
+        <Route path="launch/:launchId" element={<LaunchDetails />} />
       </Routes>
     </Fragment>
   );
