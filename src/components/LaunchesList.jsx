@@ -7,7 +7,7 @@ export function LaunchesList() {
   const [lauches, setLaunches] = useState([]);
 
   useEffect(() => {
-    API.getAllLaunches().then(setLaunches);
+    API.getAllLaunches().then(setLaunches).catch(console.log);
   }, []);
 
   //Lo mismo, escrito de otra manera
@@ -25,7 +25,7 @@ export function LaunchesList() {
       </Heading>
       <section>
         {lauches.map((launch) => (
-          <Launchitem key={launch.flight_number} {...launch} />
+          <Launchitem key={launch.id} {...launch} />
         ))}
       </section>
     </Fragment>

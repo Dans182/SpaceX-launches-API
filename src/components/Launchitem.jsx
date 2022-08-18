@@ -25,8 +25,8 @@ export const Launchitem = (launch) => {
           {format(parseISO(launch.date_local), "d MMMM, yyyy")}
         </Text>
       </Flex>
-      {/* <Link to={"/launch/" + launch.flight_number}> */}
-      <Link to={`/launch/${launch.flight_number}`}>
+      {/* <Link to={"/launch/" + launch.id}> */}
+      <Link to={`/launch/${launch.id}`}>
         <Button mt={2} colorScheme="purple">
           More details
         </Button>
