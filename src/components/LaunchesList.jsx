@@ -4,7 +4,7 @@ import { Launchitem } from "./Launchitem";
 import * as API from "../services/launches"; //importo todos las rutas de API, como "API"
 
 export function LaunchesList() {
-  const [lauches, setLaunches] = useState([]);
+  const [launches, setLaunches] = useState([]);
 
   useEffect(() => {
     API.getAllLaunches().then(setLaunches).catch(console.log);
@@ -23,11 +23,15 @@ export function LaunchesList() {
       <Heading as="h1" size="lg" margin={4}>
         SpaceX Launches
       </Heading>
-      <section>
-        {lauches.map((launch) => (
-          <Launchitem key={launch.id} {...launch} />
-        ))}
-      </section>
+      {launches.length === 0 ? (
+        <div>Loading...</div>
+      ) : (
+        <section>
+          {launches.map((launch) => (
+            <Launchitem key={launch.id} {...launch} />
+          ))}
+        </section>
+      )}
     </Fragment>
   );
 }
