@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import * as API from "../services/launches";
 import { Box, Flex, Text, Spacer, Tag } from "@chakra-ui/react";
@@ -16,20 +16,29 @@ export const LaunchDetails = () => {
     API.getLaunchById(launchId).then(setLaunch).catch(console.log);
   }, [launchId]);
   return (
-    <Box bg="gray.100" padding={4} margin={4} borderRadius="lg">
-      {!launch ? <div>Loading...</div> : 
-      <Flex>
-        <Text fontSize="2x1">
-          Mission:{" "}
-          <strong>
-            {launch.name} ({format(parseISO(launch.date_utc), "yyyy")})
-          </strong>
-        </Text>
-        <Spacer />
-        <Tag padding={2} colorScheme={launch.success ? "green" : "red"}>
-          {launch.success ? "Success" : "Failure"}
-        </Tag>
-      </Flex>}
-    </Box>
+    <Fragment>
+      <Box bg="gray.100" padding={4} margin={4} borderRadius="lg">
+        {!launch ? (
+          <div>Loading...</div>
+        ) : (
+          <Box bg="gray.100" padding={4} margin={4} borderRadius="lg">
+            <Flex>
+              <Text fontSize="2x1">
+                Mission:{" "}
+                <strong>
+                  {launch.name} 
+                  {/* ({format(parseISO(launch.date_utc), "yyyy")}) */}
+                </strong>
+              </Text>
+              <Spacer />
+              <Tag padding={2} colorScheme={launch.success ? "green" : "red"}>
+                {launch.success ? "Success" : "Failure"}
+              </Tag>
+            </Flex>
+            <Box></Box>
+          </Box>
+        )}
+      </Box>
+    </Fragment>
   );
 };
